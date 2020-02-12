@@ -30,8 +30,8 @@ module Qualys
       end
 
       # create a report for the selected ip adress if specified. ips is a array of strings
-      def launch(ips = [])
-        scan_template = templates.detect { |template| template['TITLE'] == 'Technical Report' }
+      def launch(ips = [] , rtemplate)
+        scan_template = templates.detect { |template| template['TITLE'] == rtemplate }
         response = api_post('/report/', query: {
           action: 'launch',
           report_title: 'Generated_by_Ruby_Qualys_gem',
